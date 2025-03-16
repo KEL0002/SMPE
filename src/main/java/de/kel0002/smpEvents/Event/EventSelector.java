@@ -122,7 +122,7 @@ public class EventSelector {
         x = Math.round(x);
         z = Math.round(z);
 
-        int y = random.nextInt(world.getMaxHeight() - world.getMinHeight()); //TODO: -
+        int y = random.nextInt(world.getMaxHeight() - world.getMinHeight());
         y = (y + world.getMinHeight());
 
         return new Location(world, x, y, z);
