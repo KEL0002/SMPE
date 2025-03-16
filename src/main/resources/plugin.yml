@@ -1,0 +1,19 @@
+name: SMP-Events
+version: '${project.version}'
+main: de.kel0002.smpEvents.Main
+api-version: '1.21'
+authors: [ KEL0002 ]
+description: Randomly starts small events for everyone on the sever to participate
+website: https://modrinth.com/plugin/smp-events
+permissions:
+  events.manage:
+    description: "Allows for starting/stopping events"
+    default: op
+  events.join:
+    description: "Allows for joining events"
+    default: true
+  events.voteskip:
+    description: "Allows for VoteSkipping events"
+    default: true
+commands:
+  smp-events:
