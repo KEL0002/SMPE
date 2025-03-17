@@ -1,3 +1,28 @@
+# SMPE
+## What it does
+The plugin randomly starts events, in which players can compete against each other if they want to. Some events are free to play while others require an entry cost to join. The winner will then recieve the combined entry cost of all players as a price.
+
+## Events
+To win, a player has to complete a randomly picked challenge as fast as possible:
+- **Advancement:** Players have to get X advancement
+- **Effect:** Players have to get X
+- **Item:** Players have to get X item
+- **Mob:** Players have to kill X mob
+- **PlaceBlockAt:** Players have to place a block at X coordinates
+- **PlaceBlockAtIn:** Players have to place a block at X coordinates in X dimension
+- **WinRaid:** Players have win a raid
+- **KillPet:** Players have to kill a pet
+
+## Other Features
+- Admin command allowing for starting and stopping events (`/smp-events [start | stop]`)
+- Voteskipping events
+- Leaving events
+- Very overcomplicated entry cost/price selection system
+
+<details>
+<summary>Config</summary>
+
+```YAML
 # The time it takes between the first join-message and the start of an event
 start_time: 120
 
@@ -58,4 +83,13 @@ Items:
   COPPER_INGOT: 5
   LAPIS_LAZULI: 6
   DIRT: 3
+
+```
+
+</details>
+
+## Links
+- Modrinth: [modrinth.com/plugin/smpe](https://modrinth.com/plugin/smpe)
+- Source: [github.com/KEL0002/SMPE](https://github.com/KEL0002/SMPE)
+- Report Issues: [github.com/KEL0002/SMPE/issues](https://github.com/KEL0002/SMPE/issues)
 

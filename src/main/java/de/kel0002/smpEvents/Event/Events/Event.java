@@ -56,7 +56,7 @@ public abstract class Event {
                     else message = Component.text(Feedback.get_msg("event.in_time_1", String.valueOf(time_to_start)));
 
 
-                    message = message.append(Component.text(" §7[Click to join]").clickEvent(ClickEvent.runCommand("/smp-events join")));
+                    message = message.append(Component.text(" §7[Click to join]").clickEvent(ClickEvent.runCommand("/smpe join")));
 
                     if (join_amount != 0) message = message.append(Component.text(" §b\uD83D\uDC8E").hoverEvent(
                             HoverEvent.showText(Component.text(Feedback.get_msg("price.hover", join_amount + " " + TextEditing.get_clean_item_name(join_material))))));

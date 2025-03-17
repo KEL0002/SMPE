@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.kel0002</groupId>
-    <artifactId>SMP-Events</artifactId>
-    <version>1.0-dev</version>
+    <artifactId>SMPE</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>SMP-Events</name>
+    <name>SMPE</name>
 
     <properties>
         <java.version>21</java.version>

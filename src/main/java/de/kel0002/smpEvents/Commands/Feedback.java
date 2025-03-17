@@ -56,14 +56,14 @@ public class Feedback {
 
             case "error.no_permission" -> "§4You do not have the required permission to perform this command!";
 
-            case "cmd.usage" -> "§4Incorrect usage: use '/smp-events [join | voteskip | leave | start | stop]'.";
+            case "cmd.usage" -> "§4Incorrect usage: use '/smpe [join | voteskip | leave | start | stop]'.";
 
-            case "cmd.start.already_running" -> "§4Another event is already running. Quit it using §o/smp-events stop.";
-            case "cmd.stop.no_event" -> "§4There is no event currently running. Start one using §o/smp-events start.";
+            case "cmd.start.already_running" -> "§4Another event is already running. Quit it using §o/smpe stop.";
+            case "cmd.stop.no_event" -> "§4There is no event currently running. Start one using §o/smpe start.";
 
             case "cmd.leave.not_in_event" -> "§4You are currently not in an event.";
             case "cmd.leave.not_now" -> "§4You cannot leave the event now.";
-            case "cmd.leave.confirm" -> "§4Leaving the event will not give you your items back! Use '/smp-events leave confirm'.";
+            case "cmd.leave.confirm" -> "§4Leaving the event will not give you your items back! Use '/smpe leave confirm'.";
 
             case "event.start_final" -> "§bThe event has now started. Your goal is to §e{parameter}§r§b as fast as possible! ";
             case "event.start.not_participating" -> "§7The event has started!";
@@ -93,6 +93,6 @@ public class Feedback {
     }
 
     public static Component getVoteSkipComponent(){
-        return Component.text("§7[Click here to VoteSkip]").clickEvent(ClickEvent.runCommand("/smp-events voteskip"));
+        return Component.text("§7[Click here to VoteSkip]").clickEvent(ClickEvent.runCommand("/smpe voteskip"));
     }
 }

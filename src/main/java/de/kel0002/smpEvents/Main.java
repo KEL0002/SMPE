@@ -24,8 +24,8 @@ public final class Main extends JavaPlugin {
 
         saveDefaultConfig();
 
-        this.getCommand("smp-events").setExecutor(new Command());
-        this.getCommand("smp-events").setTabCompleter(new CommandTabCompleter());
+        this.getCommand("smpe").setExecutor(new Command());
+        this.getCommand("smpe").setTabCompleter(new CommandTabCompleter());
 
         Bukkit.getPluginManager().registerEvents(new EventListeners(), this);
         Bukkit.getPluginManager().registerEvents(new LeaveListener(), this);
@@ -35,7 +35,7 @@ public final class Main extends JavaPlugin {
         AsyncScheduler scheduler = getServer().getAsyncScheduler();
         scheduler.runAtFixedRate(this, task -> eventManager.tick(), 0, 1, TimeUnit.SECONDS);
 
-        new Metrics(this, 25069);
+        new Metrics(this, 25137);
 
     }
 
