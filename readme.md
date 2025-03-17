@@ -14,7 +14,7 @@ To win, a player has to complete a randomly picked challenge as fast as possible
 - **KillPet:** Players have to kill a pet
 
 ## Other Features
-- Admin command allowing for starting and stopping events (`/smp-events [start | stop]`)
+- Admin command allowing for starting and stopping events (`/smpe [start | stop]`)
 - Voteskipping events
 - Leaving events
 - Very overcomplicated entry cost/price selection system
