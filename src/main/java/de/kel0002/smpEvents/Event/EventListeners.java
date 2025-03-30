@@ -13,6 +13,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.raid.RaidFinishEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -104,6 +105,15 @@ public class EventListeners implements Listener {
         if(!current_event.inEvent(player)) return;
         if (Objects.requireNonNull(event.getNewEffect()).getType().equals(effectEvent.getEffect())){
             EventManager.get().stopEvent_Winner(player);
+        }
+    }
+
+    @EventHandler
+    public void onMove(PlayerMoveEvent event){
+        Event current_event = EventManager.get().getCurrentEvent();
+        if (!(current_event instanceof BiomeEvent biomeEvent) || !current_event.inMainGame()) return;
+        if (event.getPlayer().getLocation().getWorld().getBiome(event.getPlayer().getLocation()).equals(biomeEvent.getBiome())){
+            EventManager.get().stopEvent_Winner(event.getPlayer());
         }
     }
 

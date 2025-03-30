@@ -6,7 +6,9 @@ import de.kel0002.smpEvents.General.ReallyGeneral;
 import de.kel0002.smpEvents.Main;
 import org.bukkit.*;
 import org.bukkit.advancement.Advancement;
+import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
@@ -55,8 +57,19 @@ public class EventSelector {
                 event = new KillPetEvent();
                 break;
             }
+            if (Objects.equals(type, "Biome")){
+                Biome rb = getRandomBiome();
+                if (!biomeValid(rb)) continue;
+                event = new BiomeEvent(rb);
+                break;
+            }
         }
         return event;
+    }
+
+    public static Biome getRandomBiome(){
+        List<Biome> biomes = new ArrayList<>(Registry.BIOME.stream().toList());
+        return biomes.get(ThreadLocalRandom.current().nextInt(biomes.size()));
     }
 
     public static PotionEffectType getRandomEffect(){
@@ -103,6 +116,16 @@ public class EventSelector {
         return !InvCheck.anyPlayerHasMaterial(material);
     }
 
+    public static boolean biomeValid(Biome biome){
+        boolean valid = true;
+        for (Player player : Bukkit.getOnlinePlayers()){
+            if (player.getLocation().getWorld().getBiome(player.getLocation()).equals(biome)){
+                valid = false;
+            }
+        }
+        return valid;
+    }
+
     public static Material getRandomItem(){
         List<Material> materials = Arrays.stream(Material.values())
                 .filter(Material::isItem)
@@ -139,6 +162,7 @@ public class EventSelector {
         eventTypes.add("PlaceBlockAtIn");
         eventTypes.add("WinRaid");
         eventTypes.add("KillPet");
+        eventTypes.add("Biome");
         return eventTypes;
     }
 

@@ -8,6 +8,7 @@ To win, a player has to complete a randomly picked challenge as fast as possible
 - **Effect:** Players have to get X
 - **Item:** Players have to get X item
 - **Mob:** Players have to kill X mob
+- **Biome:** Players have to enter X biome
 - **PlaceBlockAt:** Players have to place a block at X coordinates
 - **PlaceBlockAtIn:** Players have to place a block at X coordinates in X dimension
 - **WinRaid:** Players have win a raid
@@ -56,6 +57,9 @@ Events:
   Mob:
     probability: 120
     skill: 90
+  Biome:
+    probability: 120
+    skill: 40
   PlaceBlockAt:
     probability: 50
     skill: 30

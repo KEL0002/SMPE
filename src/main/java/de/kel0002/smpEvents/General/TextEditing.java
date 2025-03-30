@@ -1,14 +1,20 @@
 package de.kel0002.smpEvents.General;
 
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+import net.kyori.adventure.translation.Translatable;
+import net.kyori.adventure.translation.TranslationRegistry;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.advancement.Advancement;
+import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class TextEditing {
     public static String capitalizeAfterSpace(String input) {
@@ -52,5 +58,9 @@ public class TextEditing {
     }
     public static String get_clean_effect_name(PotionEffectType effect){
         return capitalizeAfterSpace(effect.getKey().getKey().replace("_", " "));
+    }
+    public static String get_clean_biome_name(Biome biome){
+        return  capitalizeAfterSpace(biome.toString().replace("_", " ").toLowerCase());
+
     }
 }
