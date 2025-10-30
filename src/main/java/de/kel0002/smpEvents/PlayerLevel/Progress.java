@@ -11,6 +11,9 @@ import java.util.List;
 
 public class Progress {
 	public static int getServerProgress(){
+
+        if (Bukkit.getOnlinePlayers().isEmpty()) return 0;
+
 		List<Integer> progresses = new ArrayList<>();
 		for (Player player : Bukkit.getOnlinePlayers()){
 			progresses.add(getPlayerProgress(player));
