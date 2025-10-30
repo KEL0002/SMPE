@@ -20,19 +20,22 @@ public class Command implements CommandExecutor {
                     boolean success_start = eventManager.startEvent();
                     if (success_start){return true;}
                     else {Feedback.sendMSG(sender, "cmd.start.already_running"); return false;}
+
                 case "stop":
                     if (!sender.hasPermission("events.manage")){ Feedback.sendMSG(sender, "error.no_permission"); return false;}
                     boolean success_stop = eventManager.stopEvent();
                     if (success_stop){ Feedback.broadcastMSG("event.stop");
                         return true;}
                     else {Feedback.sendMSG(sender, "cmd.stop.no_event"); return false;}
+
                 case "join":
                     if (!sender.hasPermission("events.join")){ Feedback.sendMSG(sender, "error.no_permission"); return false;}
-                    if (!(sender instanceof Player player)) return false;
+                    if (!(sender instanceof Player player)){ Feedback.sendMSG(sender, "error.not_a_player"); return false;}
                     if (eventManager.getCurrentEvent() == null) { Feedback.sendMSG(sender,"join.error.unable"); return false;}
                     if (eventManager.getCurrentEvent().hasStarted) { Feedback.sendMSG(sender,"join.error.unable"); return false;}
                     eventManager.getCurrentEvent().addPlayer(player);
                     return true;
+
                 case "voteskip":
                     if (!(sender instanceof Player player)) return false;
                     if (!sender.hasPermission("events.voteskip")){ Feedback.sendMSG(sender, "error.no_permission"); return false;}
@@ -43,6 +46,7 @@ public class Command implements CommandExecutor {
                     boolean voteskip_success = eventManager.getCurrentEvent().addVoteSkipper(player);
                     if (!voteskip_success) Feedback.sendMSG(player, "event.no_voteskip");
                     return true;
+
                 case "configcheck":
                     if (!sender.hasPermission("events.manage")){ Feedback.sendMSG(sender, "error.no_permission"); return false;}
                     sendConfigCheck(sender);

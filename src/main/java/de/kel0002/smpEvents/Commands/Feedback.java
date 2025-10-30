@@ -55,6 +55,7 @@ public class Feedback {
             case "price.hover" -> "This event requires {parameter} to compete.";
 
             case "error.no_permission" -> "§4You do not have the required permission to perform this command!";
+            case "error.not_a_player" -> "§4You have to be a player to perform this command!";
 
             case "cmd.usage" -> "§4Incorrect usage: use '/smpe [join | voteskip | leave | start | stop]'.";
 
