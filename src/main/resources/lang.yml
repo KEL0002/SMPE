@@ -1,0 +1,118 @@
+# This file mostly supports the MiniMessage format
+#   https://webui.advntr.dev for online creator, https://docs.papermc.io/adventure/minimessage/format/ for doc
+#   Use /smpe echo TEXT to test in game
+# Variables starting or ending with '_' will have their values have added a ' ' at the start/end if the value is not empty
+# Variables are almost always available in a logical context
+# Define custom variables at the bottom
+command_feedback:
+  stop_all: "%p%aAll Events were stopped."
+  stop_single: "%p%aEvent %EVENT_NUMBER% was stopped."
+error:
+  usage: "%p%NO%%eUsage: /smpe [join | leave | voteskip | list] "
+  usage_join: "%p%NO%%eUsage: /smpe join [EVENTNUMBER] %EventListInteraction%"
+  usage_stop: "%p%NO%%eUsage: /smpe stop [EVENTNUMBER] %EventListInteraction%"
+  not_a_player: "%p%eYou have to be a player to perform this command."
+  no_permission: "%p%NO%%eYou do not have the permission to perform this command"
+  not_in_event: "%p%NO%%eYou are not in an event."
+  event_out_of_range: "%p%NO%%eThe event does not exist"
+  event_already_running: "%p%NO%%eThe event you are trying to join is already running"
+  fireworks_disabled: "%p%NO%<sprite:items:item/firework_rocket>%eFireworks are disabled during the current event"
+info:
+  list: "%pThere are currently %AMOUNT% Event(s) running:\n%LIST%"
+pregame:
+  not_joined: "%pAn Event is starting in %CLOCK%%TIME%! %JoinInteraction%<hover:show_text:'This Event requires %ENTRYCOST_RAW% to join. The winner will receive the combined cost of all players. If the event is cancelled, you will get it back.'>%_ENTRYCOST_FORMATTED%</hover>"
+  joined: "%pThe Event is starting in %CLOCK%%TIME%! %LeaveInteraction%"
+  join: "%p%YES%%PH% %PLAYER% joined Event %EVENT_NUMBER%!"
+  join_already_joined: "%p%NO%%eYou are already in this Event!"
+  join_already_joined_other: "%p%NO%%eYou are already in Event %OTHER_EVENT_NUMBER%. Leave it to join Event %EVENT_NUMBER%"
+  join_no_entry_cost: "%p%NO%%eThis Event requires %ENTRYCOST_RAW% to join. <hover:show_text:'This Event requires %ENTRYCOST_RAW% to join. The winner will receive the combined cost of all players. If the event is cancelled, you will get it back.'>🛈</hover>"
+  actionbar: "%p%YES%You are in the Event. Starting in %CLOCK%%TIME% (%STEVE%ₓ%PLAYERCOUNT_LOWER%)"
+start:
+  not_enough_players: "%p%NO%There were not enough players to start the event"
+  started_not_participating: "%pThe Event has started"
+  started_participating: "%p%YES%The Event has started! Your goal is to %EVENT_GOAL% as fast as possible. %VoteskipInteraction%%_NOTICE%"
+  goals:
+    # Special variables:
+    #   %SOMEATTRIBUTE% - Formatted version of the goals attribute e.g. %ITEM%
+    #   %SOMEATTRIBUTE_RAW% - Raw version of the goals attribute
+    #   %TR_KEY% - Translation key for the event goals attribute. common usage: <lang:%TR_KEY%>
+    # Note that translation keys change based on the players selected language, but that %SOMEATTRIBUTE% also may not be what the attribute is called in English
+    itemEvent: "get the item %ITEM_ICON%<hover:show_text:'%ITEM%'><lang:%TR_KEY%></hover>"
+    biomeEvent: "enter the %BOOTS%biome <hover:show_text:'%BIOME%'><lang:%TR_KEY%></hover>"
+    effectEvent: "obtain the potion effect %EFFECT_ICON%<hover:show_text:'%EFFECT%'><lang:%TR_KEY%></hover>"
+    winRaidEvent: "win a <sprite:gui:mob_effect/raid_omen>raid"
+    killMobEvent: "%SWORD%kill the mob <hover:show_text:'%MOB%'><sprite:items:item/%MOB_RAW%_spawn_egg><lang:%TR_KEY%></hover>"
+    killPetEvent: "%SWORD%kill any <sprite:items:item/cat_spawn_egg>pet"
+    placeBlockAtEvent: "place a block at <sprite:gui:hud/locator_bar_arrow_down>%LOCATION%"
+    placeBlockAtInEvent: "place a block at <sprite:gui:hud/locator_bar_arrow_down>%LOCATION% in %WORLD_ICON%%WORLD%"
+    advancementEvent: "get the advancement <hover:show_text:'%ADVANCEMENT%:\n<lang:%DESCRIPTION%>'><lang:%TR_KEY%></hover>"
+  notice:
+    itemEvent: ""
+    biomeEvent: ""
+    effectEvent: ""
+    winRaidEvent: ""
+    killMobEvent: ""
+    killPetEvent: "<hover:show_text:'A pet is considered a mob that was tamed by any player'>🛈</hover>"
+    placeBlockAtEvent: ""
+    placeBlockAtInEvent: ""
+    advancementEvent: "<hover:show_text:'The advancement has been temporarily revoked from you if you already had it. You will get it back after this event'>🛈</hover>"
+
+main:
+  leave: "%p%NO%%PH% %PLAYER% left the event!"
+  voteskip_already_done: "%p%NO%%eYou have already voted for skipping this event"
+  voteskip_before_start: "%p%NO%%eYou cannot vote to skip before the start"
+  voteskip: "%p%PH% %PLAYER% voted for skipping this event (%VOTESKIPPER_AMOUNT%/%VOTESKIPPERS_REQUIRED%)"
+
+  actionbar: "%CLOCK%%TIME% - %ACTIONBAR_GOAL%"
+  actionbar_goal:
+    itemEvent: "Get the item: %ITEM_ICON%<lang:%TR_KEY%>"
+    biomeEvent: "%BOOTS%Enter the biome: <lang:%TR_KEY%>"
+    effectEvent: "Obtain the effect: %EFFECT_ICON%<lang:%TR_KEY%>"
+    winRaidEvent: "Win a <sprite:gui:mob_effect/raid_omen>raid"
+    killMobEvent: "%SWORD%Kill the mob: <sprite:items:item/%MOB_RAW%_spawn_egg><lang:%TR_KEY%>"
+    killPetEvent: "%SWORD%Kill a <sprite:items:item/cat_spawn_egg>pet"
+    placeBlockAtEvent: "Place a block at: <sprite:gui:hud/locator_bar_arrow_down>%LOCATION%"
+    placeBlockAtInEvent: "Place a block at: <sprite:gui:hud/locator_bar_arrow_down>%LOCATION% in %WORLD_ICON%%WORLD%"
+    advancementEvent: "Get the advancement <lang:%TR_KEY%>"
+
+end:
+  winner: "%p%YES%%PH% %PLAYER% won the event!"
+  voteskipped: "%p%NO%The event was voteskipped!"
+  cancel: "%p%NO%The event was cancelled!"
+  actionbar: ""
+  title_winner: "%p%PH% %PLAYER% won the event!"
+console: # MiniMessage not supported in the console
+  join: "%p%PLAYER% has joined event %EVENT_NUMBER%."
+  leave: "%p%PLAYER% has left event %EVENT_NUMBER%."
+  start: "%pEvent %EVENT_NUMBER% has started."
+  end: "%pEvent %EVENT_NUMBER% has ended for reason: %MESSAGE%"
+
+
+updater:
+  updateCheckFailed: "%pFailed to check fetch updates for SMPE"
+  console_updateAvailable: "%pThere is a new update for SMPE available! (%CURRENT% -> %NEW%) Download: https://modrinth.com/plugin/smpe/version/%NEW%"
+  player_updateAvailable: "%p%aThere is a new update available for SMPE! (%CURRENT% -> %NEW%) <click:open_url:https://modrinth.com/plugin/smpe/version/%NEW%><color:#1bd96a>[DOWNLOAD]</click>"
+
+# Map custom Variables to Strings
+# Fixed variables never contain non-capitalized characters
+custom:
+  "%p": "" #Preset for all chat messages; empty by default
+  "%PH%": "<head:%PLAYER%>" #Display the player head icon
+  "%CLOCK%": "<sprite:items:item/clock_20>"
+  "%STEVE%": "<head:entity/player/wide/steve>"
+  "%SWORD%": "<sprite:items:item/diamond_sword>"
+  "%BOOTS%": "<sprite:items:item/diamond_boots>"
+  "%YES%": "<sprite:gui:pending_invite/accept>"
+  "%NO%": "<sprite:gui:pending_invite/reject>"
+
+  "%EventListInteraction%": "<color:#ffffff><hover:show_text:'Click to show a list of all running events'><click:run_command:'smpe list'><sprite:items:item/paper>ₗᵢₛₜ ₑᵥₑₙₜₛ</click>"
+  "%LeaveInteraction%": "<hover:show_text:'Click to leave the event'><click:run_command:'smpe leave'><sprite:items:item/spider_eye>ₗₑₐᵥₑ</click></hover>"
+  "%JoinInteraction%": "<hover:show_text:'Click to join the event'><click:run_command:'smpe join %EVENT_NUMBER%'><sprite:items:item/slime_ball>ⱼₒᵢₙ</click></hover>"
+  "%VoteskipInteraction%": "<hover:show_text:'Click to voteskip the event. You can always use /smpe voteskip to do this'><click:run_command:'smpe voteskip'><sprite:items:item/firework_rocket>ᵥₒₜₑₛₖᵢₚ</click></hover>"
+
+  #=============================================
+  #========= Customise the colors here =========
+  #=============================================
+
+  "%a": "<color:#b805ff>" # Feedback for admin commands
+  "%e": "<color:#7e0b01>" # Color for errors

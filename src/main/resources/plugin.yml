@@ -1,0 +1,21 @@
+name: smpe
+version: '${project.version}'
+main: de.kel0002.smpe.Main
+api-version: '1.21'
+authors: [ KEL0002 ]
+website: https://modrinth.com/plugin/smpe
+permissions:
+  events.manage:
+    description: "Allows for starting and stopping events"
+    default: op
+  events.join:
+    description: "Allows for joining events"
+    default: true
+  events.voteskip:
+    description: "Allows for voteskipping events"
+    default: true
+  events.update:
+    description: "Player has permission to update the plugin and will receive a notification when a new version is available"
+    default: op
+commands:
+  smpe:
