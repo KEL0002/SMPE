@@ -23,7 +23,7 @@ min_players: 2
 voteskip_percent: 75
 
 console_logging: false
-autoupdater: false # Only notifíes about updates, doesn't perform them
+autoupdater: true # Only notifíes about updates, doesn't perform them
 
 
 # If you want all events to be free, set all weights except 'none' to 0
