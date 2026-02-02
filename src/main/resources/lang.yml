@@ -61,7 +61,7 @@ main:
   leave: "%p%NO%%PH% %PLAYER% left the event!"
   voteskip_already_done: "%p%NO%%eYou have already voted for skipping this event"
   voteskip_before_start: "%p%NO%%eYou cannot vote to skip before the start"
-  voteskip: "%p%PH% %PLAYER% voted for skipping this event (%VOTESKIPPER_AMOUNT%/%VOTESKIPPERS_REQUIRED%)"
+  voteskip: "%p<sprite:items:item/firework_rocket>%PH% %PLAYER% voted for skipping this event (%VOTESKIPPER_AMOUNT%/%VOTESKIPPERS_REQUIRED%)"
 
   actionbar: "%CLOCK%%TIME% - %ACTIONBAR_GOAL%"
   actionbar_goal:

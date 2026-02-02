@@ -5,8 +5,8 @@
 #  ███████║██║ ╚═╝ ██║██║     ███████╗    ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝
 #  ╚══════╝╚═╝     ╚═╝╚═╝     ╚══════╝     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝
 
-# Info: Setting values that don't make sense might break the plugins functionality.
-#  If this happens, its not bad. You can either reset the config by deleting its file, or find the default value in the
+# Info: Setting values that don't make sense might break the plugins' functionality.
+#  If this happens, it's not a huge problem. You can either reset the config by deleting its file, or find the default value in the
 #  'config' section of this plugins GitHub & Modrinth websites.
 # I recommend leaving most stuff as is, but you may consider taking a look at the 'entrycost' section, as you might
 #  consider changing it to fit your players play-style
