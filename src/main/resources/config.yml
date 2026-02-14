@@ -19,6 +19,8 @@ start_time: 121 # Time it takes for an event to start.
 notify_times: [1,2,3,4,5,10,20,30] # List of specific times when to send a join message
 multiples_of: 30 # Always sends a notification if the time is a multiple of this number; 0=none
 
+timeskip_percent: 80 # % of online players that have to be in the event for it's time to skip to 5s
+
 min_players: 2
 voteskip_percent: 75
 
@@ -80,7 +82,7 @@ events:
     weight: 6
     fireworks_disabled: true
   structureEvent:
-    weight: 10000
+    weight: 6
     fireworks_disabled: false
   winRaidEvent:
     weight: 1

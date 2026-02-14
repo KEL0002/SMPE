@@ -56,12 +56,12 @@ public class Event implements Listener {
 
     public void tick() {
         time += 1;
-        if (time < 0) {manage_pregame(time);
+        if (time < 0) {manage_pregame();
         } else if (time == 0) {manage_start();
         } else {manage_main();}
     }
 
-    public void manage_pregame(int time) {
+    public void manage_pregame() {
         int time_to_start = -time;
 
         //SEND NOTIFICATION
@@ -77,8 +77,13 @@ public class Event implements Listener {
                 }
             }
         }
-
         broadcastActionBar("pregame.actionbar", players, getReplacements());
+
+        // Check timeskip
+        if ((double) Bukkit.getOnlinePlayers().size()*((double) configManager.getInt("timeskip_percent")/100) <= players.size()
+        && time_to_start > 200) {
+            time = -101;
+        }
     }
 
     public void manage_start() {
