@@ -6,6 +6,7 @@ import org.bukkit.advancement.Advancement;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
 import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.generator.structure.StructureType;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
@@ -70,6 +71,10 @@ public class CleanText {
             case THE_END -> {return "the end";}
             default -> {return world.getName();}
         }
+    }
+
+    public static String clean(StructureType structure) {
+        return format(structure.getKey().getKey());
     }
 
 

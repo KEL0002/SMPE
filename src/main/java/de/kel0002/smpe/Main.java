@@ -85,15 +85,17 @@ public final class Main extends JavaPlugin {
     public static void registerEvents(){
         // I know that im currently always initializing events with null, null, but this will change in future releases so don't remove
 
-        eventRegistrar.register("itemEvent",() -> new ItemEvent(null, null, null));
+        eventRegistrar.register("advancementEvent",() -> new AdvancementEvent(null, null, null));
         eventRegistrar.register("biomeEvent",() -> new BiomeEvent(null, null, null));
         eventRegistrar.register("effectEvent",() -> new EffectEvent(null, null, null));
-        eventRegistrar.register("winRaidEvent",() -> new WinRaidEvent(null, null));
+        eventRegistrar.register("itemEvent",() -> new ItemEvent(null, null, null));
         eventRegistrar.register("killMobEvent",() -> new KillMobEvent(null, null, null));
         eventRegistrar.register("killPetEvent",() -> new KillPetEvent(null, null));
         eventRegistrar.register("placeBlockAtEvent",() -> new PlaceBlockAtEvent(null, null, null));
         eventRegistrar.register("placeBlockAtInEvent",() -> new PlaceBlockAtInEvent(null, null, null));
-        eventRegistrar.register("advancementEvent",() -> new AdvancementEvent(null, null, null));
+        eventRegistrar.register("structureEvent",() -> new StructureEvent(null, null, null));
+        eventRegistrar.register("winRaidEvent",() -> new WinRaidEvent(null, null));
+
     }
 
     public static void randomStart() {

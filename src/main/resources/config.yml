@@ -79,6 +79,9 @@ events:
     radius: 3000
     weight: 6
     fireworks_disabled: true
+  structureEvent:
+    weight: 10000
+    fireworks_disabled: false
   winRaidEvent:
     weight: 1
     fireworks_disabled: false
