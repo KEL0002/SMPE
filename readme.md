@@ -12,6 +12,7 @@ To win, a player has to complete a randomly picked challenge as fast as possible
 - **KillPet:** Players have to kill a pet
 - **PlaceBlockAt:** Players have to place a block at X coordinates
 - **PlaceBlockAtIn:** Players have to place a block at X coordinates in X dimension
+- **StructureEvent:** Players have to enter X structure
 - **WinRaid:** Players have win a raid
 
 ## Other Features
@@ -47,6 +48,8 @@ random_start_multible_events: false # Allows for multiple events to be overlappi
 start_time: 121 # Time it takes for an event to start.
 notify_times: [1,2,3,4,5,10,20,30] # List of specific times when to send a join message
 multiples_of: 30 # Always sends a notification if the time is a multiple of this number; 0=none
+
+timeskip_percent: 80 # % of online players that have to be in the event for it's time to skip to 5s
 
 min_players: 2
 voteskip_percent: 75
@@ -108,6 +111,9 @@ events:
     radius: 3000
     weight: 6
     fireworks_disabled: true
+  structureEvent:
+    weight: 6
+    fireworks_disabled: false
   winRaidEvent:
     weight: 1
     fireworks_disabled: false
@@ -158,26 +164,27 @@ start:
     #   %SOMEATTRIBUTE_RAW% - Raw version of the goals attribute
     #   %TR_KEY% - Translation key for the event goals attribute. common usage: <lang:%TR_KEY%>
     # Note that translation keys change based on the players selected language, but that %SOMEATTRIBUTE% also may not be what the attribute is called in English
-    itemEvent: "get the item %ITEM_ICON%<hover:show_text:'%ITEM%'><lang:%TR_KEY%></hover>"
+    advancementEvent: "get the advancement <hover:show_text:'%ADVANCEMENT%:\n<lang:%DESCRIPTION%>'><lang:%TR_KEY%></hover>"
     biomeEvent: "enter the %BOOTS%biome <hover:show_text:'%BIOME%'><lang:%TR_KEY%></hover>"
     effectEvent: "obtain the potion effect %EFFECT_ICON%<hover:show_text:'%EFFECT%'><lang:%TR_KEY%></hover>"
-    winRaidEvent: "win a <sprite:gui:mob_effect/raid_omen>raid"
+    itemEvent: "get the item %ITEM_ICON%<hover:show_text:'%ITEM%'><lang:%TR_KEY%></hover>"
     killMobEvent: "%SWORD%kill the mob <hover:show_text:'%MOB%'><sprite:items:item/%MOB_RAW%_spawn_egg><lang:%TR_KEY%></hover>"
     killPetEvent: "%SWORD%kill any <sprite:items:item/cat_spawn_egg>pet"
     placeBlockAtEvent: "place a block at <sprite:gui:hud/locator_bar_arrow_down>%LOCATION%"
     placeBlockAtInEvent: "place a block at <sprite:gui:hud/locator_bar_arrow_down>%LOCATION% in %WORLD_ICON%%WORLD%"
-    advancementEvent: "get the advancement <hover:show_text:'%ADVANCEMENT%:\n<lang:%DESCRIPTION%>'><lang:%TR_KEY%></hover>"
+    structureEvent: "enter the %STRUCTURE_BLOCK% structure %STRUCTURE%"
+    winRaidEvent: "win a <sprite:gui:mob_effect/raid_omen>raid"
   notice:
-    itemEvent: ""
+    advancementEvent: "<hover:show_text:'The advancement has been temporarily revoked from you if you already had it. You will get it back after this event'>🛈</hover>"
     biomeEvent: ""
     effectEvent: ""
-    winRaidEvent: ""
+    itemEvent: ""
     killMobEvent: ""
     killPetEvent: "<hover:show_text:'A pet is considered a mob that was tamed by any player'>🛈</hover>"
     placeBlockAtEvent: ""
     placeBlockAtInEvent: ""
-    advancementEvent: "<hover:show_text:'The advancement has been temporarily revoked from you if you already had it. You will get it back after this event'>🛈</hover>"
-
+    structureEvent: ""
+    winRaidEvent: ""
 main:
   leave: "%p%NO%%PH% %PLAYER% left the event!"
   voteskip_already_done: "%p%NO%%eYou have already voted for skipping this event"
@@ -186,15 +193,16 @@ main:
 
   actionbar: "%CLOCK%%TIME% - %ACTIONBAR_GOAL%"
   actionbar_goal:
-    itemEvent: "Get the item: %ITEM_ICON%<lang:%TR_KEY%>"
+    advancementEvent: "Get the advancement: <lang:%TR_KEY%>"
     biomeEvent: "%BOOTS%Enter the biome: <lang:%TR_KEY%>"
     effectEvent: "Obtain the effect: %EFFECT_ICON%<lang:%TR_KEY%>"
-    winRaidEvent: "Win a <sprite:gui:mob_effect/raid_omen>raid"
+    itemEvent: "Get the item: %ITEM_ICON%<lang:%TR_KEY%>"
     killMobEvent: "%SWORD%Kill the mob: <sprite:items:item/%MOB_RAW%_spawn_egg><lang:%TR_KEY%>"
     killPetEvent: "%SWORD%Kill a <sprite:items:item/cat_spawn_egg>pet"
     placeBlockAtEvent: "Place a block at: <sprite:gui:hud/locator_bar_arrow_down>%LOCATION%"
     placeBlockAtInEvent: "Place a block at: <sprite:gui:hud/locator_bar_arrow_down>%LOCATION% in %WORLD_ICON%%WORLD%"
-    advancementEvent: "Get the advancement <lang:%TR_KEY%>"
+    structureEvent: "%STRUCTURE_BLOCK% Enter the structure: %STRUCTURE%"
+    winRaidEvent: "Win a <sprite:gui:mob_effect/raid_omen>raid"
 
 end:
   winner: "%p%YES%%PH% %PLAYER% won the event!"
@@ -223,6 +231,7 @@ custom:
   "%STEVE%": "<head:entity/player/wide/steve>"
   "%SWORD%": "<sprite:items:item/diamond_sword>"
   "%BOOTS%": "<sprite:items:item/diamond_boots>"
+  "%STRUCTURE_BLOCK%": "<sprite:blocks:block/structure_block>"
   "%YES%": "<sprite:gui:pending_invite/accept>"
   "%NO%": "<sprite:gui:pending_invite/reject>"
 
