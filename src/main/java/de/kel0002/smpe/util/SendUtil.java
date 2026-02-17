@@ -41,7 +41,7 @@ public class SendUtil {
         player.showTitle(Title.title(langManager.get(key, replacements), Component.text(""))); //If you want to you can implement subtitles, I am to lazy :D
     }
 
-
+    public static void broadcastSound(Sound sound) {for (Player player : Bukkit.getOnlinePlayers()) playSound(player, sound);}
     public static void broadcastSound(List<Player> players, Sound sound) { broadcastSound(players, sound, 1, 1);}
     public static void broadcastSound(List<Player> players, Sound sound, float volume, float pitch) {
             for (Player player : players) playSound(player,  sound);}

@@ -76,6 +76,8 @@ public class Event implements Listener {
                     sendMessage(player, "pregame.joined");
                 }
             }
+
+            broadcastSound(Sound.BLOCK_NOTE_BLOCK_BASS);
         }
         broadcastActionBar("pregame.actionbar", players, getReplacements());
 
