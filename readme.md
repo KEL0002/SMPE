@@ -1,4 +1,4 @@
-# SMPE
+![SMPE](https://raw.githubusercontent.com/KEL0002/SMPE/refs/heads/v2/assets/title.png)
 ## What it does
 The plugin randomly starts 'Events', in which players can compete against each other to complete a certain challenge. By default, most events are free to play, but some require an entry cost to join. The winner will then receive the combined entry cost of all players as a price.
 
