@@ -43,7 +43,7 @@ To win, a player has to complete a randomly picked challenge as fast as possible
 
 start_chance_denominator: 24000 # Fancy wording for: in each tick, there is a 1 in ... chance of a random event starting
 # Default is 24000, so an event will on average start every 20 minutes
-random_start_multible_events: false # Allows for multiple events to be overlapping with random starting.
+random_start_multiple_events: false # Allows for multiple events to be overlapping with random starting.
 
 start_time: 121 # Time it takes for an event to start.
 notify_times: [1,2,3,4,5,10,20,30] # List of specific times when to send a join message
@@ -55,7 +55,7 @@ min_players: 2
 voteskip_percent: 75
 
 console_logging: false
-autoupdater: true # Only notifíes about updates, doesn't perform them
+autoupdater: true # Only notifies about updates, doesn't perform them
 
 
 # If you want all events to be free, set all weights except 'none' to 0

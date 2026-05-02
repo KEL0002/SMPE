@@ -212,7 +212,7 @@ public class Event implements Listener {
         }
 
         voteSkippers.add(player);
-        broadcast("main.voteskip", Map.of("%PLAYER%", player.getName()));
+        broadcast("main.voteskip", players, Map.of("%PLAYER%", player.getName()));
 
         checkVoteskip();
         return true;

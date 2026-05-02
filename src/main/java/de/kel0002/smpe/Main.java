@@ -100,7 +100,7 @@ public final class Main extends JavaPlugin {
 
     public static void randomStart() {
         if (random.nextInt(0, randomStartDenominator) == 0) {
-            if (!configManager.getBoolean("random_start_multible_events") && !eventManager.all_event_ints().isEmpty()) return;
+            if (!configManager.getBoolean("random_start_multiple_events") && !eventManager.all_event_ints().isEmpty()) return;
             eventManager.register(eventRegistrar.random());
         }
     }

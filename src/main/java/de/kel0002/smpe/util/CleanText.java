@@ -87,7 +87,6 @@ public class CleanText {
         if (material.isBlock() && material.isSolid() && material.isOccluding()) {return "<sprite:blocks:block/" + material.name().toLowerCase() + ">";}
         if (!material.isBlock()) {return "<sprite:\"minecraft:items\":item/" + material.name().toLowerCase() + ">";}
         //TODO: Add more blocks
-        //EIG alles außer stairs, slabs,, etc
         return "?";
     }
 
