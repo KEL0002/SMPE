@@ -38,4 +38,13 @@ public class GeneralUtil {
                 .replaceAll("9", "₉");
 
     }
+
+    public static boolean isFolia() { // Copied from https://docs.papermc.io/paper/dev/folia-support/
+        try {
+            Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+    }
 }

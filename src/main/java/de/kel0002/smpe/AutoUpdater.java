@@ -3,15 +3,12 @@ package de.kel0002.smpe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonObject;
-import de.kel0002.smpe.util.ConfigManager;
-import de.kel0002.smpe.util.LangManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.net.URI;
-import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -26,7 +23,7 @@ public class AutoUpdater implements Listener {
     String newest = "";
 
     public void checkUpdate() {
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+        Bukkit.getAsyncScheduler().runNow(Main.getInstance(), task -> {
             try {
                 HttpClient client = HttpClient.newHttpClient();
                 HttpRequest request = HttpRequest.newBuilder()

@@ -7,6 +7,7 @@ import de.kel0002.smpe.events.EventManager;
 import de.kel0002.smpe.events.EventRegistrar;
 import de.kel0002.smpe.events.types.*;
 import de.kel0002.smpe.util.ConfigManager;
+import de.kel0002.smpe.util.GeneralUtil;
 import de.kel0002.smpe.util.LangManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -60,8 +61,13 @@ public final class Main extends JavaPlugin {
         registerEvents();
         randomStartDenominator = configManager.getInt("start_chance_denominator");
 
-        getServer().getScheduler().runTaskTimer(this, task -> eventManager.tick_all(), 0L, 1L);
-        getServer().getScheduler().runTaskTimer(this, task -> randomStart(), 0L, 1L);
+        if (!GeneralUtil.isFolia()) {
+            getServer().getScheduler().runTaskTimer(this, task -> eventManager.tick_all(), 0L, 1L);
+            getServer().getScheduler().runTaskTimer(this, task -> randomStart(), 0L, 1L);
+        } else {
+            getServer().getGlobalRegionScheduler().runAtFixedRate(this, task -> eventManager.tick_all(), 1L, 1L);
+            getServer().getGlobalRegionScheduler().runAtFixedRate(this, task -> randomStart(), 1L, 1L);
+        }
 
         autoUpdater = new AutoUpdater();
         autoUpdater.checkUpdate();

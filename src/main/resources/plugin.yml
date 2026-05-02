@@ -4,6 +4,7 @@ main: de.kel0002.smpe.Main
 api-version: '1.21'
 authors: [ KEL0002 ]
 website: https://modrinth.com/plugin/smpe
+folia-supported: true
 permissions:
   events.manage:
     description: "Allows for starting and stopping events"
