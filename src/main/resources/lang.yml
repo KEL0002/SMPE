@@ -93,7 +93,7 @@ console: # MiniMessage not supported in the console
 updater:
   updateCheckFailed: "%pFailed to check fetch updates for SMPE"
   console_updateAvailable: "%pThere is a new update for SMPE available! (%CURRENT% -> %NEW%) Download: https://modrinth.com/plugin/smpe/version/%NEW%"
-  player_updateAvailable: "%p%aThere is a new update available for SMPE! (%CURRENT% -> %NEW%) <click:open_url:https://modrinth.com/plugin/smpe/version/%NEW%><color:#1bd96a>[DOWNLOAD]</click>"
+  player_updateAvailable: "%p%aThere is a new update available for SMPE! <color:gray>(%CURRENT% -> %NEW%) <click:open_url:https://modrinth.com/plugin/smpe/version/%NEW%><color:#00b138>[DOWNLOAD]</click>"
 
 # Map custom Variables to Strings
 # Fixed variables never contain non-capitalized characters
