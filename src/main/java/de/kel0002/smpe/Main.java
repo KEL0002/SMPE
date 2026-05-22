@@ -107,6 +107,9 @@ public final class Main extends JavaPlugin {
     public static void randomStart() {
         if (random.nextInt(0, randomStartDenominator) == 0) {
             if (!configManager.getBoolean("random_start_multiple_events") && !eventManager.all_event_ints().isEmpty()) return;
+
+            if (Bukkit.getOnlinePlayers().size() < configManager.getInt("min_players")) return;
+
             eventManager.register(eventRegistrar.random());
         }
     }
