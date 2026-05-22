@@ -59,6 +59,9 @@ public class PlaceBlockAtInEvent extends Event {
     }
 
     public static Vector centeredPos() {
+
+        if (Bukkit.getOnlinePlayers().isEmpty()) return new Vector(0, 0, 0);
+
         int sum_x = 0;
         int sum_z = 0;
         for (Player player : Bukkit.getOnlinePlayers()) {
