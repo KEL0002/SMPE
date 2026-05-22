@@ -24,7 +24,8 @@ public class LangManager {
     }
 
     public void load() {
-        plugin.saveResource("lang.yml", false);
+        if (!new File(plugin.getDataFolder(), "lang.yml").exists()) {
+            plugin.saveResource("lang.yml", false);}
         File file = new File(plugin.getDataFolder(), "lang.yml");
         lang = YamlConfiguration.loadConfiguration(file);
 
