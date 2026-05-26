@@ -1,8 +1,6 @@
 package de.kel0002.smpe;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -39,6 +37,10 @@ public class AutoUpdater implements Listener {
                 newest = latest.get("version_number").getAsString();
 
                 if (newest.equals(current)) return; //Assuming you are not like me and ahead of the latest release
+
+                JsonArray available_for = latest.getAsJsonArray("game_versions");
+                if (!available_for.contains(new JsonPrimitive(Bukkit.getMinecraftVersion())))
+                    return;
 
                 updateAvailable = true;
 
