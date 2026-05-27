@@ -2,7 +2,7 @@
 name: Console error
 about: Some error related to SMPE is appearing in the console
 title: ''
-labels: ''
+labels: error
 assignees: ''
 
 ---
