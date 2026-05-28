@@ -1,0 +1,23 @@
+name: Update Readme configs
+
+on:
+  push:
+    paths:
+      - 'src/main/resources/config.yml'
+      - 'src/main/resources/lang.yml'
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update README
+        run: python3 .github/scripts/update_readme.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "readme-updater[bot]"
+          git config user.email "readme-updater[bot]@users.noreply.github.com"
+          git add readme.md
+          git diff --cached --quiet || git commit -m "Synced readme to config.yml & lang.yml"
+          git push

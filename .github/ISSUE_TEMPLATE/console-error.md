@@ -7,10 +7,11 @@ assignees: ''
 
 ---
 
-Logs:
+**Logs**:
 ```
 Paste the part of the logs related to SMPE here
 ```
+**Additional Information**:
 
 **Version**
 Plugin Version:
