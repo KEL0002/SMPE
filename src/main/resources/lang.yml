@@ -30,7 +30,7 @@ pregame:
   actionbar: "%p%YES%You are in the Event. Starting in %CLOCK%%TIME% (%STEVE%ₓ%PLAYERCOUNT_LOWER%)"
 start:
   not_enough_players: "%p%NO%There were not enough players to start the event"
-  started_not_participating: "%pThe Event has started"
+  started_not_participating: "%p%iThe Event has started without you participating"
   started_participating: "%p%YES%The Event has started! Your goal is to %EVENT_GOAL% as fast as possible. %VoteskipInteraction%%_NOTICE%"
   goals:
     # Special variables:
@@ -119,3 +119,4 @@ custom:
 
   "%a": "<color:#b805ff>" # Feedback for admin commands
   "%e": "<color:#7e0b01>" # Color for errors
+  "%i": "<gray>" # Color for irrelevant information
