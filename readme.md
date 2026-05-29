@@ -42,7 +42,7 @@ To win, a player has to complete a randomly picked challenge as fast as possible
 #  consider changing it to fit your players play-style
 
 start_chance_denominator: 24000 # Fancy wording for: in each tick, there is a 1 in ... chance of a random event starting
-# Default is 24000, so an event will on average start every 20 minutes
+  # Default is 24000, so an event will on average start every 20 minutes
 random_start_multiple_events: false # Allows for multiple events to be overlapping with random starting.
 
 start_time: 121 # Time it takes for an event to start.
@@ -128,9 +128,10 @@ events:
 # This file mostly supports the MiniMessage format
 #   https://webui.advntr.dev for online creator, https://docs.papermc.io/adventure/minimessage/format/ for doc
 #   Use /smpe echo TEXT to test in game
+# Variables are usually indicated by a '%' at the start and end
+# Most Variables are hardcoded by the plugin, but some are mapped at the end of the file
 # Variables starting or ending with '_' will have their values have added a ' ' at the start/end if the value is not empty
-# Variables are almost always available in a logical context
-# Define custom variables at the bottom
+
 command_feedback:
   stop_all: "%p%aAll Events were stopped."
   stop_single: "%p%aEvent %EVENT_NUMBER% was stopped."
@@ -145,7 +146,8 @@ error:
   event_already_running: "%p%NO%%eThe event you are trying to join is already running"
   fireworks_disabled: "%p%NO%<sprite:items:item/firework_rocket>%eFireworks are disabled during the current event"
 info:
-  list: "%pThere are currently %AMOUNT% Event(s) running:\n%LIST%"
+  list: "%pThere are currently %AMOUNT% Event(s) running:
+%LIST%"
 pregame:
   not_joined: "%pAn Event is starting in %CLOCK%%TIME%! %JoinInteraction%<hover:show_text:'This Event requires %ENTRYCOST_RAW% to join. The winner will receive the combined cost of all players. If the event is cancelled, you will get it back.'>%_ENTRYCOST_FORMATTED%</hover>"
   joined: "%pThe Event is starting in %CLOCK%%TIME%! %LeaveInteraction%"
@@ -164,16 +166,17 @@ start:
     #   %SOMEATTRIBUTE_RAW% - Raw version of the goals attribute
     #   %TR_KEY% - Translation key for the event goals attribute. common usage: <lang:%TR_KEY%>
     # Note that translation keys change based on the players selected language, but that %SOMEATTRIBUTE% also may not be what the attribute is called in English
-    advancementEvent: "get the advancement <hover:show_text:'%ADVANCEMENT%:\n<lang:%DESCRIPTION%>'><lang:%TR_KEY%></hover>"
-    biomeEvent: "enter the %BOOTS%biome <hover:show_text:'%BIOME%'><lang:%TR_KEY%></hover>"
+    advancementEvent: "get the advancement <hover:show_text:'%ADVANCEMENT%:
+<lang:%DESCRIPTION%>'><lang:%TR_KEY%></hover>"
+    biomeEvent: "%BOOTS%enter the biome <hover:show_text:'%BIOME%'><lang:%TR_KEY%></hover>"
     effectEvent: "obtain the potion effect %EFFECT_ICON%<hover:show_text:'%EFFECT%'><lang:%TR_KEY%></hover>"
     itemEvent: "get the item %ITEM_ICON%<hover:show_text:'%ITEM%'><lang:%TR_KEY%></hover>"
     killMobEvent: "%SWORD%kill the mob <hover:show_text:'%MOB%'><sprite:items:item/%MOB_RAW%_spawn_egg><lang:%TR_KEY%></hover>"
     killPetEvent: "%SWORD%kill any <sprite:items:item/cat_spawn_egg>pet"
-    placeBlockAtEvent: "place a block at <sprite:gui:hud/locator_bar_arrow_down>%LOCATION%"
-    placeBlockAtInEvent: "place a block at <sprite:gui:hud/locator_bar_arrow_down>%LOCATION% in %WORLD_ICON%%WORLD%"
-    structureEvent: "enter the %STRUCTURE_BLOCK% structure %STRUCTURE%"
-    winRaidEvent: "win a <sprite:gui:mob_effect/raid_omen>raid"
+    placeBlockAtEvent: "<sprite:gui:hud/locator_bar_arrow_down>place a block at %LOCATION%"
+    placeBlockAtInEvent: "<sprite:gui:hud/locator_bar_arrow_down>place a block at %LOCATION% in %WORLD_ICON%%WORLD%"
+    structureEvent: "%STRUCTURE_BLOCK%enter the structure %STRUCTURE%"
+    winRaidEvent: "<sprite:gui:mob_effect/raid_omen>win a raid"
   notice:
     advancementEvent: "<hover:show_text:'The advancement has been temporarily revoked from you if you already had it. You will get it back after this event'>🛈</hover>"
     biomeEvent: ""
@@ -220,10 +223,9 @@ console: # MiniMessage not supported in the console
 updater:
   updateCheckFailed: "%pFailed to check fetch updates for SMPE"
   console_updateAvailable: "%pThere is a new update for SMPE available! (%CURRENT% -> %NEW%) Download: https://modrinth.com/plugin/smpe/version/%NEW%"
-  player_updateAvailable: "%p%aThere is a new update available for SMPE! (%CURRENT% -> %NEW%) <click:open_url:https://modrinth.com/plugin/smpe/version/%NEW%><color:#1bd96a>[DOWNLOAD]</click>"
+  player_updateAvailable: "%p%aThere is a new update available for SMPE! <color:gray>(%CURRENT% -> %NEW%) <click:open_url:https://modrinth.com/plugin/smpe/version/%NEW%><color:#00b138>[DOWNLOAD]</click>"
 
 # Map custom Variables to Strings
-# Fixed variables never contain non-capitalized characters
 custom:
   "%p": "" #Preset for all chat messages; empty by default
   "%PH%": "<head:%PLAYER%>" #Display the player head icon
