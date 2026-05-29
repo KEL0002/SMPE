@@ -1,0 +1,15 @@
+name: Sync Readme to Modrinth
+
+on:
+  push:
+    paths:
+      - 'readme.md'
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: sync README
+        env:
+          MODRINTH_PAT: ${{ secrets.MODRINTH_PAT }}
+        run: python3 .github/workflows/sync_to_modrinth.py
