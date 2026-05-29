@@ -4,14 +4,12 @@ import de.kel0002.smpe.Main;
 import de.kel0002.smpe.entry.ProgressRater;
 import de.kel0002.smpe.events.Event;
 import de.kel0002.smpe.events.EventManager;
-import de.kel0002.smpe.util.CleanText;
 import de.kel0002.smpe.util.GeneralUtil;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Sound;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.PlayerInventory;
 import org.jetbrains.annotations.NotNull;
 import static de.kel0002.smpe.util.SendUtil.*;
 
@@ -28,7 +26,7 @@ public class Command implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, org.bukkit.command.@NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
-        if (args.length == 0) { sendMessage("error.usage", sender); return false;}
+        if (args.length == 0) { return handleWrongUsage(sender); }
         switch (args[0].toLowerCase()) {
             case "list" -> {
                 List<Event> events = Main.getEventManager().getEvents();
@@ -59,11 +57,14 @@ public class Command implements CommandExecutor {
             case "echo" -> sender.sendMessage(MiniMessage.miniMessage().deserialize(String.join(" ", Arrays.stream(args).toList())));
             case "sprogress" ->{ if (sender.hasPermission("events.manage")) sender.sendMessage("Server progress: " + ProgressRater.serverProgress());}
 
-            default -> {
-                if (sender instanceof Player p)playSound(p, Sound.BLOCK_NOTE_BLOCK_DIDGERIDOO);
-                sendMessage("error.usage", sender);
-            }
+            default -> handleWrongUsage(sender);
         }
+        return false;
+    }
+
+    public boolean handleWrongUsage(CommandSender sender) {
+        if (sender instanceof Player p)playSound(p, Sound.BLOCK_NOTE_BLOCK_DIDGERIDOO);
+        sendMessage("error.usage", sender);
         return false;
     }
 

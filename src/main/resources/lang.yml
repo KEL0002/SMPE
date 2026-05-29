@@ -1,9 +1,10 @@
 # This file mostly supports the MiniMessage format
 #   https://webui.advntr.dev for online creator, https://docs.papermc.io/adventure/minimessage/format/ for doc
 #   Use /smpe echo TEXT to test in game
+# Variables are usually indicated by a '%' at the start and end
+# Most Variables are hardcoded by the plugin, but some are mapped at the end of the file
 # Variables starting or ending with '_' will have their values have added a ' ' at the start/end if the value is not empty
-# Variables are almost always available in a logical context
-# Define custom variables at the bottom
+
 command_feedback:
   stop_all: "%p%aAll Events were stopped."
   stop_single: "%p%aEvent %EVENT_NUMBER% was stopped."
