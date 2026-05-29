@@ -75,7 +75,7 @@ main:
     killPetEvent: "%SWORD%Kill a <sprite:items:item/cat_spawn_egg>pet"
     placeBlockAtEvent: "Place a block at: <sprite:gui:hud/locator_bar_arrow_down>%LOCATION%"
     placeBlockAtInEvent: "Place a block at: <sprite:gui:hud/locator_bar_arrow_down>%LOCATION% in %WORLD_ICON%%WORLD%"
-    structureEvent: "%STRUCTURE_BLOCK% Enter the structure: %STRUCTURE%"
+    structureEvent: "%STRUCTURE_BLOCK%Enter the structure: %STRUCTURE%"
     winRaidEvent: "Win a <sprite:gui:mob_effect/raid_omen>raid"
 
 end:
