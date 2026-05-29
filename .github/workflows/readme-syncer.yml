@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - 'readme.md'
+  workflow_run:
+    workflows: ["Update Readme configs"]
+    types:
+      - completed
 jobs:
   sync:
     runs-on: ubuntu-latest
