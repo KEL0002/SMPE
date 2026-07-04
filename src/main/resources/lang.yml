@@ -119,4 +119,4 @@ custom:
 
   "%a": "<color:#b805ff>" # Feedback for admin commands
   "%e": "<color:#7e0b01>" # Color for errors
-  "%i": "<gray>" # Color for irrelevant information
+  "%i": "<color:gray>" # Color for irrelevant information
