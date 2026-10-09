@@ -45,20 +45,7 @@ public final class Main extends JavaPlugin {
         playerAttributes.load(new File(getDataFolder(), "playerdata"));
 
         Metrics metrics = new Metrics(this, 25137);
-
-        // Could not find an option to create it on the bstats website, but if i figure it out this should work
-        metrics.addCustomChart(new Metrics.MultiLineChart("events_running_multi", () -> {
-            Map<String, Integer> valueMap = new HashMap<>();
-
-            valueMap.put("overall", eventManager.all_event_ints().size());
-            for (Event event : eventManager.getEvents()) {
-                if (event != null) {
-                    valueMap.put(event.type(), valueMap.getOrDefault(event.type(), 0) + 1);
-                }
-            }
-            return valueMap;}));
-
-        metrics.addCustomChart(new Metrics.SingleLineChart("events_running", () -> eventManager.all_event_ints().size()));
+        addMetrics(metrics);
 
 
         this.getCommand("smpe").setExecutor(new Command());
@@ -120,5 +107,29 @@ public final class Main extends JavaPlugin {
 
             eventManager.register(eventRegistrar.random());
         }
+    }
+
+    public static void addMetrics(Metrics metrics) {
+        // Could not find an option to create it on the bstats website, but if i figure it out this should work
+        metrics.addCustomChart(new Metrics.MultiLineChart("events_running_multi", () -> {
+            Map<String, Integer> valueMap = new HashMap<>();
+
+            valueMap.put("overall", eventManager.all_event_ints().size());
+            for (Event event : eventManager.getEvents()) {
+                if (event != null) {
+                    valueMap.put(event.type(), valueMap.getOrDefault(event.type(), 0) + 1);
+                }
+            }
+            return valueMap;}));
+
+        metrics.addCustomChart(new Metrics.SingleLineChart("events_running", () -> eventManager.all_event_ints().size()));
+
+        metrics.addCustomChart(new Metrics.AdvancedPie("playerwins", () -> {
+            Map<String, Integer> map = new HashMap<>();
+            for (Object wins : Main.getPlayerAttributes().getPlayerValueMap("wins").values()) {
+                map.merge(wins.toString() + " wins", 1, Integer::sum);
+            }
+            return map;
+        }));
     }
 }
