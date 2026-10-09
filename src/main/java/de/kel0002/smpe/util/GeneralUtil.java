@@ -2,7 +2,7 @@ package de.kel0002.smpe.util;
 
 public class GeneralUtil {
     public static String format_time(int ticks) {
-        int seconds = ticks/20;
+        int seconds = (int) Math.ceil(ticks/20.0);
         int h = seconds / 3600;
         int min = (seconds % 3600) / 60;
         int s = seconds % 60;
