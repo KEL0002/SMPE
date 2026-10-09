@@ -245,6 +245,11 @@ public class Event implements Listener {
                 entryCost.giveWin(player, original_playerCount);
                 broadcast("end.winner", players, Map.of("%PLAYER%", player.getName()));
                 playWinEffect(player);
+
+                Object wins = Main.getPlayerAttributes().get(player, "wins");
+                if (wins == null) Main.getPlayerAttributes().set(player, "wins", 1);
+                else if (wins instanceof Integer winInt) Main.getPlayerAttributes().set(player, "wins", winInt + 1);
+
                 log("end", Map.of("%MESSAGE%", langManager.getString("end.winner", Map.of("%PLAYER%", player.getName()))));
 
             } else {

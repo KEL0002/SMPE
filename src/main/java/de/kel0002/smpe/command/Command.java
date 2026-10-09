@@ -6,6 +6,7 @@ import de.kel0002.smpe.events.Event;
 import de.kel0002.smpe.events.EventManager;
 import de.kel0002.smpe.util.GeneralUtil;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,10 +14,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import static de.kel0002.smpe.util.SendUtil.*;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Command implements CommandExecutor {
@@ -53,6 +51,8 @@ public class Command implements CommandExecutor {
 
             case "voteskip" -> {return handleVoteskip(sender);}
 
+            case "leaderboard" -> {return sendLeaderboard(sender);}
+
             // Hidden utility commands
             case "echo" -> sender.sendMessage(MiniMessage.miniMessage().deserialize(String.join(" ", Arrays.stream(args).toList())));
             case "sprogress" ->{ if (sender.hasPermission("events.manage")) sender.sendMessage("Server progress: " + ProgressRater.serverProgress());}
@@ -66,6 +66,16 @@ public class Command implements CommandExecutor {
         if (sender instanceof Player p)playSound(p, Sound.BLOCK_NOTE_BLOCK_DIDGERIDOO);
         sendMessage("error.usage", sender);
         return false;
+    }
+
+    public boolean sendLeaderboard(CommandSender sender) {
+        String string = Main.getPlayerAttributes().getPlayerValueMap("wins").entrySet().stream()
+                .sorted((a, b) -> Integer.compare((Integer) b.getValue(), (Integer) a.getValue()))
+                .map(e -> "<head:" + Bukkit.getOfflinePlayer(e.getKey()).getName() + ">" + Bukkit.getOfflinePlayer(e.getKey()).getName() + ": " + e.getValue())
+                .collect(Collectors.joining("<newline>"));
+
+        sendMessage("info.leaderboard", sender, Map.of("%LIST%", string));
+        return true;
     }
 
     public boolean handleStart(CommandSender sender) {

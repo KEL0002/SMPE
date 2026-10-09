@@ -9,9 +9,11 @@ import de.kel0002.smpe.events.types.*;
 import de.kel0002.smpe.util.ConfigManager;
 import de.kel0002.smpe.util.GeneralUtil;
 import de.kel0002.smpe.util.LangManager;
+import de.kel0002.smpe.util.PlayerAttributes;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -26,6 +28,7 @@ public final class Main extends JavaPlugin {
     static AutoUpdater autoUpdater;
     static int randomStartDenominator;
     static Random random = new Random();
+    static PlayerAttributes playerAttributes;
 
 
     @Override
@@ -37,6 +40,9 @@ public final class Main extends JavaPlugin {
         langManager.load();
         configManager = new ConfigManager(this);
         configManager.load();
+
+        playerAttributes = new PlayerAttributes();
+        playerAttributes.load(new File(getDataFolder(), "playerdata"));
 
         Metrics metrics = new Metrics(this, 25137);
 
@@ -81,9 +87,11 @@ public final class Main extends JavaPlugin {
     public static EventManager getEventManager() {return eventManager;}
     public static Main getInstance() {return instance;}
     public static EventRegistrar eventRegistrar() {return eventRegistrar;}
+    public static PlayerAttributes getPlayerAttributes() {return playerAttributes;}
 
     @Override public void onDisable() {
         eventManager.stopAll();
+        playerAttributes.save(new File(getDataFolder(), "playerdata"));
     }
 
 

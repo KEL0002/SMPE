@@ -28,6 +28,7 @@ public class CommandTabCompleter implements TabCompleter {
                 suggestions.add("leave");
             }
             suggestions.add("list");
+            suggestions.add("leaderboard");
         }
         if (args.length == 2) {
             if ( "stop".equalsIgnoreCase(args[0]) && sender.hasPermission("events.manage")) {

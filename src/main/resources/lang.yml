@@ -19,7 +19,8 @@ error:
   event_already_running: "%p%NO%%eThe event you are trying to join is already running"
   fireworks_disabled: "%p%NO%<sprite:items:item/firework_rocket>%eFireworks are disabled during the current event"
 info:
-  list: "%pThere are currently %AMOUNT% Event(s) running:\n%LIST%"
+  list: "%pThere are currently %AMOUNT% Event(s) running:<newline>%LIST%"
+  leaderboard: "%p<bold><gold>Top Wins:<reset><newline>%LIST%"
 pregame:
   not_joined: "%pAn Event is starting in %CLOCK%%TIME%! %JoinInteraction%<hover:show_text:'This Event requires %ENTRYCOST_RAW% to join. The winner will receive the combined cost of all players. If the event is cancelled, you will get it back.'>%_ENTRYCOST_FORMATTED%</hover>"
   joined: "%pThe Event is starting in %CLOCK%%TIME%! %LeaveInteraction%"
@@ -38,15 +39,15 @@ start:
     #   %SOMEATTRIBUTE_RAW% - Raw version of the goals attribute
     #   %TR_KEY% - Translation key for the event goals attribute. common usage: <lang:%TR_KEY%>
     # Note that translation keys change based on the players selected language, but that %SOMEATTRIBUTE% also may not be what the attribute is called in English
-    advancementEvent: "get the advancement <hover:show_text:'%ADVANCEMENT%:\n<lang:%DESCRIPTION%>'><lang:%TR_KEY%></hover>"
-    biomeEvent: "%BOOTS%enter the biome <hover:show_text:'%BIOME%'><lang:%TR_KEY%></hover>"
+    advancementEvent: "get the advancement <hover:show_text:'%ADVANCEMENT%:<newline><lang:%DESCRIPTION%>'><lang:%TR_KEY%></hover>"
+    biomeEvent: "%BOOTS% enter the biome <hover:show_text:'%BIOME%'><lang:%TR_KEY%></hover>"
     effectEvent: "obtain the potion effect %EFFECT_ICON%<hover:show_text:'%EFFECT%'><lang:%TR_KEY%></hover>"
     itemEvent: "get the item %ITEM_ICON%<hover:show_text:'%ITEM%'><lang:%TR_KEY%></hover>"
     killMobEvent: "%SWORD%kill the mob <hover:show_text:'%MOB%'><sprite:items:item/%MOB_RAW%_spawn_egg><lang:%TR_KEY%></hover>"
     killPetEvent: "%SWORD%kill any <sprite:items:item/cat_spawn_egg>pet"
     placeBlockAtEvent: "<sprite:gui:hud/locator_bar_arrow_down>place a block at %LOCATION%"
     placeBlockAtInEvent: "<sprite:gui:hud/locator_bar_arrow_down>place a block at %LOCATION% in %WORLD_ICON%%WORLD%"
-    structureEvent: "%STRUCTURE_BLOCK%enter the structure %STRUCTURE%"
+    structureEvent: "%STRUCTURE_BLOCK% enter the structure %STRUCTURE%"
     winRaidEvent: "<sprite:gui:mob_effect/raid_omen>win a raid"
   notice:
     advancementEvent: "<hover:show_text:'The advancement has been temporarily revoked from you if you already had it. You will get it back after this event'>🛈</hover>"
