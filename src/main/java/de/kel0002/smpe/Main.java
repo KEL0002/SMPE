@@ -127,7 +127,7 @@ public final class Main extends JavaPlugin {
         metrics.addCustomChart(new Metrics.AdvancedPie("playerwins", () -> {
             Map<String, Integer> map = new HashMap<>();
             for (Object wins : Main.getPlayerAttributes().getPlayerValueMap("wins").values()) {
-                map.merge(wins.toString() + " wins", 1, Integer::sum);
+                map.merge(wins + ((wins.equals(1) ? " win" : " wins")), 1, Integer::sum);
             }
             return map;
         }));
